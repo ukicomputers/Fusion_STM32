@@ -6,14 +6,18 @@ on:
       - main
 
 jobs:
-  compile_and_release:
+  job:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository with submodules
+    - name: Checkout repository
       uses: actions/checkout@v2
-      with:
-        submodules: 'recursive'
+
+    - name: Initialize Micropython submodule and submodules
+      run: |
+        git submodule update --init lib/micropython
+        cd lib/micropython
+        git submodule update --init lib/stm32lib lib/mbedtls lib/lwip lib/micropython-lib
 
     - name: Install required dependencies
       run: |
@@ -22,7 +26,8 @@ jobs:
 
     - name: Make MicroPython CC
       run: |
-        make -C lib/micropython/lib/micropython/mpy-cross
+        make -C lib/micropython/mpy-cross
+        cd ../../
 
     - name: Build the HEX files
       run: |
@@ -32,8 +37,9 @@ jobs:
           board_name=$(basename "$board_dir")
           mkdir -p release
           cp build/firmware.hex "release/${board_name}.hex"
-          cd ..
+          make clean
         done
+        cd ../../
 
     - name: Create Release
       id: create_release
@@ -45,11 +51,3 @@ jobs:
           Release created automatically from commit: ${{ github.sha }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Clean Up
-      run: |
-        for board_dir in mcu/*/; do
-          cd "$board_dir"
-          make clean
-          cd ..
-        done
