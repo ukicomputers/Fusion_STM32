@@ -40,22 +40,15 @@ jobs:
           make clean
         done
         cd ../../
-        
-    - name: Get tag name
-      id: tag
-      run: |
-        commit_message=$(git log -1 --pretty=%B)
-        sanitized_message=$(echo "$commit_message" | tr -cd '[:alnum:]')
-        echo "::set-output name=release_tag::${sanitized_message:0:8}"
 
     - name: Release version
       id: create_release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
+        tag_name: v0.1.0
         files: |
           mcu/*/release/*.hex
         body: |
-          Release created automatically from commit: ${{ steps.tag.outputs.release_tag }}. Signed off (probably) by @ukicomputers. Release stable.
+          Release created automatically. Signed off (probably) by @ukicomputers. Release stable.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
