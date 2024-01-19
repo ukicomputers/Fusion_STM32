@@ -45,9 +45,10 @@ jobs:
       id: create_release
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: ${{ github.sha }}
         files: |
           mcu/*/release/*.hex
         body: |
-          Release created automatically from commit: ${{ github.sha }}
+          Release created automatically from commit: ${{ github.sha }}. Signed off (probably) by @ukicomputers. Release stable.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
