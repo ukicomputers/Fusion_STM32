@@ -1,5 +1,5 @@
 # Fusion_STM32
-Port for MicroPython language on STM32 developed for MikroE development boards such as Fusion for ARM v8.
+Port for MicroPython language on STM32 developed for Fusion for ARM v8.
 
 # Prepare
 You are required to init submodules and install required compilers. <br>
@@ -19,17 +19,12 @@ To build a firmware for choosen development board, you need to do following. The
 cd boards/<dev_board>
 make -j$(nproc) LTO=1 DEBUG=0
 ```
-`LTO` usually shrinks .hex file for 2-3%.
+`LTO` (Link Time Optimisation) usually shrinks .hex file for 2-3%.
 `DEBUG` stands to enable debugging symbols for GDB.
-
-# Builts
-|  DEV board | MCU    | File | Size | Verify | Ethernet build |
-| :--------: | :--------: | :-------: | :-------: | :-------: | :-------: |
-| Fusion for ARM v8 | STM32F43(7/9)(Z/G/I)  | [firmware_noeth.hex](https://github.com/ukicomputers/Fusion_STM32/tree/main/builts/Fusion_STM32F43/firmware_noeth.hex)    | 857 KB   | PASSED | N/A  |
 
 # Support
 Port currently **DOES NOT** support TFT SSD19603 controller.<br>
-Ethernet may/may not work.
+Ethernet may work (currently, checks have passed).
 ## STM32 family
 This MPY port supports following STM32 families:
 - F0
@@ -44,6 +39,9 @@ This MPY port supports following STM32 families:
 
 **(*) With minimal possible usage beacuse of memory limit & other things** <br>
 **(!) May not all alternate functions (LAN, BLE, Wi-Fi) usable or developed** 
+
+# Release
+The ports are automatically built by GitHub Actions on every new commit. Check the latest release to find a HEX file for your MCU.
 
 # License
 MicroPython is licensed under MIT license by Damien P. George `Copyright (c) 2021 Damien P. George`<br>

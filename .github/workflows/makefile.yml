@@ -13,7 +13,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Initialize Micropython submodule and submodules
+    - name: Initialize MicroPython submodule
       run: |
         git submodule update --init lib/micropython
         cd lib/micropython
