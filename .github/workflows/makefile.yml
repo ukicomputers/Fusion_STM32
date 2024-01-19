@@ -41,14 +41,20 @@ jobs:
         done
         cd ../../
 
-    - name: Create Release
+    - name: Get commit message
+      run: |
+        commit_message=$(git log -1 --pretty=%B)
+        sanitized_message=$(echo "$commit_message" | tr -cd '[:alnum:]')
+        commit_name="${sanitized_message:0:8}"
+
+    - name: Release version
       id: create_release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.sha }}
+        tag_name: ${{ commit_name }}
         files: |
           mcu/*/release/*.hex
         body: |
-          Release created automatically from commit: ${{ github.sha }}. Signed off (probably) by @ukicomputers. Release stable.
+          Release created automatically from commit: ${{ commit_name }}. Signed off (probably) by @ukicomputers. Release stable.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
