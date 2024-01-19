@@ -1,0 +1,55 @@
+name: Compile and Release MicroPython firmware
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  compile_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository with submodules
+      uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+
+    - name: Install required dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-arm-linux-gnueabi
+
+    - name: Make MicroPython CC
+      run: |
+        make -C lib/micropython/lib/micropython/mpy-cross
+
+    - name: Build the HEX files
+      run: |
+        for board_dir in mcu/*/; do
+          cd "$board_dir"
+          make -j$(nproc) LTO=1
+          board_name=$(basename "$board_dir")
+          mkdir -p release
+          cp build/firmware.hex "release/${board_name}.hex"
+          cd ..
+        done
+
+    - name: Create Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          mcu/*/release/*.hex
+        body: |
+          Release created automatically from commit: ${{ github.sha }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Clean Up
+      run: |
+        for board_dir in mcu/*/; do
+          cd "$board_dir"
+          make clean
+          cd ..
+        done
