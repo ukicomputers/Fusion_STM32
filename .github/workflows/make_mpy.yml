@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  job:
+  make_mpy:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,10 +45,10 @@ jobs:
       id: create_release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: v0.1.0
+        tag_name: v0.1.0 - ${{ github.event.head_commit.message }}
         files: |
           mcu/*/release/*.hex
         body: |
-          Release created automatically. Signed off (probably) by @ukicomputers. Release stable.
+          Release created automatically by merging commit into main. Signed-off by @ukicomputers. Release stable.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
