@@ -13,10 +13,12 @@ TEXT1_ADDR = 0x08020000
 
 # MicroPython podesavanja (nista specijalno)
 MICROPY_FLOAT_IMPL = double
-MICROPY_VFS_LFS1 = 0 # treba, samo za stare
-MICROPY_VFS_LFS2 = 1
 
-# Ethernet config, nije jos gotovo
+# LFS disejblovan, sacuva flash mesta, a samo se FAT koristi
+# MICROPY_VFS_LFS1 = 0 # treba, samo za stare
+# MICROPY_VFS_LFS2 = 1
+
+# Ethernet config (moguca promena na CycloneTCP)
 MICROPY_PY_LWIP = 1
 # MICROPY_PY_SSL = 1
 # MICROPY_SSL_MBEDTLS = 1
