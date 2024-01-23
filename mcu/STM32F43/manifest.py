@@ -2,4 +2,4 @@
 freeze("$(BOARD_DIR)/../../modules")
 
 # ETHERNET
-require("bundle-networking")
+# require("bundle-networking")
