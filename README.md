@@ -1,6 +1,9 @@
 # Fusion_STM32
 Port for MicroPython language on STM32 developed for Fusion for ARM v8.
 
+
+[![Compile and Release MicroPython firmware](https://github.com/ukicomputers/Fusion_STM32/actions/workflows/make_mpy.yml/badge.svg)](https://github.com/ukicomputers/Fusion_STM32/actions/workflows/make_mpy.yml)
+
 # Prepare
 You are required to init submodules and install required compilers. <br>
 **Submodule initialization:**
