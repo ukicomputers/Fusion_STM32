@@ -101,6 +101,7 @@
 #define MICROPY_HW_CAN1_RX          (pin_G13)
 
 // ETHERNET
+/*
 #define MICROPY_HW_ETH_MDC          (pin_C1)
 #define MICROPY_HW_ETH_MDIO         (pin_A2)
 #define MICROPY_HW_ETH_RMII_REF_CLK (pin_A1) // A8 nije ok, povezan i na A1
@@ -110,6 +111,7 @@
 #define MICROPY_HW_ETH_RMII_TX_EN   (pin_B11)
 #define MICROPY_HW_ETH_RMII_TXD0    (pin_B12)
 #define MICROPY_HW_ETH_RMII_TXD1    (pin_B13)
+*/
 
 /////////////////////////////////////////////////////////////// CONFIG INTERFACE END
 

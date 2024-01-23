@@ -19,7 +19,7 @@ MICROPY_FLOAT_IMPL = double
 # MICROPY_VFS_LFS2 = 1
 
 # Ethernet config (moguca promena na CycloneTCP)
-MICROPY_PY_LWIP = 1
+# MICROPY_PY_LWIP = 1
 # MICROPY_PY_SSL = 1
 # MICROPY_SSL_MBEDTLS = 1
 
