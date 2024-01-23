@@ -27,7 +27,7 @@ make -j$(nproc) LTO=1 DEBUG=0
 
 # Support
 Port currently **DOES NOT** support TFT SSD19603 controller.<br>
-Ethernet may work (currently, checks have passed).
+Ethernet may work.
 ## STM32 family
 This MPY port supports following STM32 families:
 - F0
