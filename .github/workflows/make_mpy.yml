@@ -38,6 +38,7 @@ jobs:
           mkdir -p release
           cp build/firmware.hex "release/${board_name}.hex"
           make clean
+          cd ../../
         done
         cd ../../
 
