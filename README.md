@@ -25,11 +25,18 @@ make -j$(nproc) LTO=1 DEBUG=0
 `LTO` (Link Time Optimisation) usually shrinks .hex file for 2-3%.
 `DEBUG` stands to enable debugging symbols for GDB.
 
+# Alternate Function file generation
+To generate a Alternate Function file, and later use it for specific MCU port, execute following Python script:
+```
+python3 make_af.py <stm32_mcu_name>
+```
+
 # Support
 Port currently **DOES NOT** support TFT SSD19603 controller.<br>
+However, plans are to add LVGL support. <br>
 Ethernet may work.
 ## STM32 family
-This MPY port supports following STM32 families:
+This MPY port supports following STM32 families (some of them are ported):
 - F0
 - F4
 - F7
@@ -50,3 +57,22 @@ The ports are automatically built by GitHub Actions on every new commit. Check t
 MicroPython is licensed under MIT license by Damien P. George `Copyright (c) 2021 Damien P. George`<br>
 This port is licensed under CC BY-3.0 license under Uglješa Lukešević. <br>
 Made for **MikroE**.
+
+## Required header
+On every file that uses this port, please add this header:
+## C/C++
+```c
+/* Port written by Uglješa Lukešević (@ukicomputers)            *
+ * MicroPython licensed with MIT license under Damien P. George */
+```
+## Python
+```py
+""" 
+Port written by Uglješa Lukešević (@ukicomputers)
+MicroPython licensed with MIT license under Damien P. George
+"""
+```
+
+It is also required when calling `help()` in MicroPython firmware to output show that port is written by me. If use this port in NECTO, also in About section, define that port is written by me, exactly like this:
+## MicroPython port
+Uglješa Lukešević

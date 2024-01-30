@@ -33,7 +33,7 @@ jobs:
       run: |
         for board_dir in mcu/*/; do
           cd "$board_dir"
-          make -j$(nproc) LTO=1
+          make -j$(nproc)
           board_name=$(basename "$board_dir")
           mkdir -p release
           cp build/firmware.hex "release/${board_name}.hex"
@@ -46,10 +46,10 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         name: ${{ github.event.head_commit.message }}
-        tag_name: v0.1.0_NOETH
+        tag_name: v0.1.1
         files: |
           mcu/*/release/*.hex
         body: |
-          Release created automatically by merging commit into main. Signed-off by @ukicomputers. Release stable.
+          Release created automatically by merging commit into main. Signed-off by @ukicomputers. Release stable for F4, F7 checks still need to pass.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
