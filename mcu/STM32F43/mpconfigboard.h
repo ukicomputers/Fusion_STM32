@@ -96,8 +96,8 @@
 #define MICROPY_HW_SPI5_MOSI        (pin_C12)
 
 // CAN bus
-#define MICROPY_HW_CAN1_TX          (pin_G12)
-#define MICROPY_HW_CAN1_RX          (pin_G13)
+#define MICROPY_HW_CAN1_TX          (pin_D1)
+#define MICROPY_HW_CAN1_RX          (pin_D0)
 
 /////////////////////////////////////////////////////////////// CONFIG INTERFACE END
 

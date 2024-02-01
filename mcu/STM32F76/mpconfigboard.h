@@ -107,8 +107,8 @@
 #define MICROPY_HW_ETH_RMII_TXD1    (pin_B13)
 
 // CAN bus
-#define MICROPY_HW_CAN1_TX          (pin_D1)
-#define MICROPY_HW_CAN1_RX          (pin_D0)
+#define MICROPY_HW_CAN1_TX          (pin_B9)
+#define MICROPY_HW_CAN1_RX          (pin_B8)
 
 /////////////////////////////////////////////////////////////// CONFIG INTERFACE END
 
