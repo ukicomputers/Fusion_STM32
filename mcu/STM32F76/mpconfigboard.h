@@ -32,32 +32,32 @@
 
 // UART konfiguracija
 // mikroBUS slot 1
-#define MICROPY_HW_UART1_TX         (pin_D8)
-#define MICROPY_HW_UART1_RX         (pin_D9)
+#define MICROPY_HW_USART1_TX        (pin_D8)
+#define MICROPY_HW_USART1_RX        (pin_D9)
 
 // mikroBUS slot 2
-#define MICROPY_HW_UART2_TX         (pin_B6)
-#define MICROPY_HW_UART2_RX         (pin_B7)
+#define MICROPY_HW_USART2_TX        (pin_B6)
+#define MICROPY_HW_USART2_RX        (pin_B7)
 
 // mikroBUS slot 3
-#define MICROPY_HW_UART3_TX         (pin_C6)
-#define MICROPY_HW_UART3_RX         (pin_C7)
+#define MICROPY_HW_USART3_TX        (pin_C6)
+#define MICROPY_HW_USART3_RX        (pin_C7)
 
 // mikroBUS slot 4
 #define MICROPY_HW_UART4_TX         (pin_E8)
 #define MICROPY_HW_UART4_RX         (pin_E7)
 
 // mikroBUS slot 5
-#define MICROPY_HW_UART5_TX         (pin_D5)
-#define MICROPY_HW_UART5_RX         (pin_D6)
+#define MICROPY_HW_USART5_TX        (pin_D5)
+#define MICROPY_HW_USART5_RX        (pin_D6)
 
 // USB UART
-#define MICROPY_HW_UART6_TX         (pin_C6)
-#define MICROPY_HW_UART6_RX         (pin_C7)
+#define MICROPY_HW_USART6_TX        (pin_C6)
+#define MICROPY_HW_USART6_RX        (pin_C7)
 
 // I2C busevi
 // mikroBUS slot 1-3
-#define MICROPY_HW_I2C1_SCL         (pin_F1)
+#define MICROPY_HW_I2C1_SCL         (pin_F1)    
 #define MICROPY_HW_I2C1_SDA         (pin_F0)
 
 // mikroBUS slot 4-5

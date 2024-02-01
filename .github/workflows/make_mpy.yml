@@ -47,10 +47,10 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         name: ${{ github.event.head_commit.message }}
-        tag_name: v0.1.1
+        tag_name: v1.0.0
         files: |
           mcu/*/release/*.hex
         body: |
-          Release created automatically by merging commit into main. Signed-off by @ukicomputers. Release stable for F4, F7 checks still need to pass.
+          Release created automatically by merging commit into main. Signed-off by @ukicomputers. Ethernet support stable mostly. Release supports F43 low memory version & F767, both tested on.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
