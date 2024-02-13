@@ -10,20 +10,18 @@
 #define MICROPY_HW_HAS_FLASH        (1)
 #define MICROPY_HW_ENABLE_RNG       (1)
 #define MICROPY_HW_ENABLE_RTC       (1)
-#define MICROPY_HW_ENABLE_ADC       (1)
 #define MICROPY_HW_ENABLE_DAC       (1)
-#define MICROPY_HW_ENABLE_USB       (1)
 #define MICROPY_PY_PYB              (0) // ode 100KB a i nije potrebno, cemu sluzi onda machine
 
 // Clock konfiguracija
-// Trenutna konfiguracija za F437ZG (NECTO USB default, porgresan 16 PLLM: 25, MCU nema 16 MHz kristal)
+// Trenutna konfiguracija za F437ZG (NECTO ETH default)
 
 #define MICROPY_HW_CLK_PLLM         (25)                // PLLM
-#define MICROPY_HW_CLK_PLLN         (336)               // PLLN
+#define MICROPY_HW_CLK_PLLN         (300)               // PLLN
 #define MICROPY_HW_CLK_PLLP         (RCC_PLLP_DIV2)     // PLLP
-#define MICROPY_HW_CLK_PLLQ         (7)                 // PLLQ
+#define MICROPY_HW_CLK_PLLQ         (4)                 // PLLQ
 
-// RTC konfiguracija    
+// RTC konfiguracija
 #define MICROPY_HW_RTC_USE_LSE      (1)
 #define MICROPY_HW_RTC_USE_US       (0)
 #define MICROPY_HW_RTC_USE_CALOUT   (0) // 512 Hz out
@@ -54,6 +52,10 @@
 // USB UART
 #define MICROPY_HW_UART6_TX         (pin_C6)
 #define MICROPY_HW_UART6_RX         (pin_C7)
+
+// Da bi ETH radio, moramo da sada koristimo USB-UART za komunikaciju
+#define MICROPY_HW_UART_REPL        (6)
+#define MICROPY_HW_UART_REPL_BAUD   115200
 
 // I2C busevi
 // mikroBUS slot 1-3
@@ -95,6 +97,18 @@
 #define MICROPY_HW_SPI5_MISO        (pin_C11)
 #define MICROPY_HW_SPI5_MOSI        (pin_C12)
 
+// ETHERNET
+#define MICROPY_HW_ETH_MDC          (pin_C1)
+#define MICROPY_HW_ETH_MDIO         (pin_A2)
+#define MICROPY_HW_ETH_RMII_REF_CLK (pin_A1) // A8 nije ok, povezan i na A1
+#define MICROPY_HW_ETH_RMII_CRS_DV  (pin_A7)
+#define MICROPY_HW_ETH_RMII_RXD0    (pin_C4)
+#define MICROPY_HW_ETH_RMII_RXD1    (pin_C5)
+#define MICROPY_HW_ETH_RMII_TX_EN   (pin_B11)
+#define MICROPY_HW_ETH_RMII_TXD0    (pin_B12)
+#define MICROPY_HW_ETH_RMII_TXD1    (pin_B13)
+#define MICROPY_HW_ETH_RMII_CLK_OUT (1)
+
 // CAN bus
 #define MICROPY_HW_CAN1_TX          (pin_D1)
 #define MICROPY_HW_CAN1_RX          (pin_D0)
@@ -105,8 +119,3 @@
 #define MICROPY_HW_LED1             (pin_B15) // koristi se za prikaz ucitavanja (ovo je prazan pin, donji levi indikator)
 #define MICROPY_HW_LED_ON(pin)      (mp_hal_pin_high(pin)) // koristi se hal_ll_gpio
 #define MICROPY_HW_LED_OFF(pin)     (mp_hal_pin_low(pin))
-
-// USB konfiguracija, MicroPython se ucitava na USB izlazu na dev ploci
-#define MICROPY_HW_USB_FS              (1)
-#define MICROPY_HW_USB_VBUS_DETECT_PIN (pin_A9)
-#define MICROPY_HW_USB_OTG_ID_PIN      (pin_A10)

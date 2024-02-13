@@ -11,17 +11,15 @@
 #define MICROPY_HW_ENABLE_RNG       (1)
 #define MICROPY_HW_ENABLE_RTC       (1)
 #define MICROPY_HW_ENABLE_DAC       (1)
-#define MICROPY_HW_ENABLE_ADC       (1)
-#define MICROPY_HW_ENABLE_USB       (1)
 #define MICROPY_PY_PYB              (0) // ode 100KB a i nije potrebno, cemu onda sluzi machine
 
 // Clock konfiguracija
 // Trenutna konfiguracija za F767 (NECTO USB default, nije 16 PLLM već 25, ima 25 MHz krstal)
 #define MICROPY_HW_CLK_PLLM         (25)                // PLLM
-#define MICROPY_HW_CLK_PLLN         (432)               // PLLN
+#define MICROPY_HW_CLK_PLLN         (400)               // PLLN
 #define MICROPY_HW_CLK_PLLP         (RCC_PLLP_DIV2)     // PLLP
-#define MICROPY_HW_CLK_PLLQ         (9)                 // PLLQ
-#define MICROPY_HW_FLASH_LATENCY    (FLASH_LATENCY_7)   // samo za 210-216 MHz
+#define MICROPY_HW_CLK_PLLQ         (2)                 // PLLQ
+// #define MICROPY_HW_FLASH_LATENCY    (FLASH_LATENCY_7)   // samo za 210-216 MHz
 
 // RTC konfiguracija
 #define MICROPY_HW_RTC_USE_LSE      (1)
@@ -54,6 +52,10 @@
 // USB UART
 #define MICROPY_HW_USART6_TX        (pin_C6)
 #define MICROPY_HW_USART6_RX        (pin_C7)
+
+// Da bi ETH radio, moramo da sada koristimo USB-UART za komunikaciju
+#define MICROPY_HW_UART_REPL        (6)
+#define MICROPY_HW_UART_REPL_BAUD   115200
 
 // I2C busevi
 // mikroBUS slot 1-3
@@ -105,6 +107,7 @@
 #define MICROPY_HW_ETH_RMII_TX_EN   (pin_B11)
 #define MICROPY_HW_ETH_RMII_TXD0    (pin_B12)
 #define MICROPY_HW_ETH_RMII_TXD1    (pin_B13)
+#define MICROPY_HW_ETH_RMII_CLK_OUT (1)
 
 // CAN bus
 #define MICROPY_HW_CAN1_TX          (pin_B9)
@@ -116,8 +119,3 @@
 #define MICROPY_HW_LED1             (pin_B15) // koristi se za prikaz ucitavanja (ovo je prazan pin, donji levi indikator)
 #define MICROPY_HW_LED_ON(pin)      (mp_hal_pin_high(pin)) // koristi se hal_ll_gpio
 #define MICROPY_HW_LED_OFF(pin)     (mp_hal_pin_low(pin))
-
-// USB konfiguracija, MicroPython se ucitava na USB izlazu na dev ploci
-#define MICROPY_HW_USB_FS              (1)
-#define MICROPY_HW_USB_VBUS_DETECT_PIN (pin_A9)
-#define MICROPY_HW_USB_OTG_ID_PIN      (pin_A10)

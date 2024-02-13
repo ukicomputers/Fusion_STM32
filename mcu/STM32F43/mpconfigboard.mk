@@ -17,3 +17,8 @@ MICROPY_FLOAT_IMPL = double
 # Moduli u MicroPython-u:
 # import <ime_fajla_biblioteke>
 FROZEN_MANIFEST = $(BOARD_DIR)/manifest.py
+
+# Ethernet config
+MICROPY_PY_LWIP = 1
+MICROPY_PY_SSL = 1
+MICROPY_SSL_MBEDTLS = 1
