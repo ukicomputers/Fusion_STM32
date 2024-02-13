@@ -14,7 +14,8 @@
 #define MICROPY_PY_PYB              (0) // ode 100KB a i nije potrebno, cemu onda sluzi machine
 
 // Clock konfiguracija
-// Trenutna konfiguracija za F767 (NECTO USB default, nije 16 PLLM već 25, ima 25 MHz krstal)
+// Trenutna konfiguracija za F767 (NECTO ETH default)
+
 #define MICROPY_HW_CLK_PLLM         (25)                // PLLM
 #define MICROPY_HW_CLK_PLLN         (400)               // PLLN
 #define MICROPY_HW_CLK_PLLP         (RCC_PLLP_DIV2)     // PLLP
