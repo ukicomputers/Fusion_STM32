@@ -51,6 +51,6 @@ jobs:
         files: |
           mcu/*/release/*.hex
         body: |
-          Release created automatically by merging commit into main. Signed-off by @ukicomputers. Ethernet support stable mostly. Release supports F43 low memory version & F767, both tested on.
+          Release created automatically by merging commit into main. The information about release you can find in [LATEST.md](https://github.com/ukicomputers/Fusion_STM32/blob/main/LATEST.md)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
