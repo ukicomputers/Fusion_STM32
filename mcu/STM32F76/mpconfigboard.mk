@@ -17,6 +17,14 @@ MICROPY_FLOAT_IMPL = double
 FROZEN_MANIFEST = $(BOARD_DIR)/manifest.py
 
 # Ethernet config
-MICROPY_PY_LWIP = 1
-MICROPY_PY_SSL = 1
-MICROPY_SSL_MBEDTLS = 1
+ifeq ($(LOWMEM),1)
+	MICROPY_PY_LWIP = 1
+	BUILD_TYPE = LOWMEM
+else
+	MICROPY_PY_LWIP = 1
+	MICROPY_PY_SSL = 1
+	MICROPY_SSL_MBEDTLS = 1
+	BUILD_TYPE = NORMAL
+endif
+
+$(info $(BUILD_TYPE) version is selected.)

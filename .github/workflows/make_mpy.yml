@@ -40,6 +40,15 @@ jobs:
           make clean
           cd ../../
         done
+        for board_dir in mcu/*/; do
+          cd "$board_dir"
+          make -j$(nproc) LOWMEM=1
+          board_name=$(basename "$board_dir")
+          mkdir -p release
+          cp build/firmware.hex "release/${board_name}-LOWMEM.hex"
+          make clean
+          cd ../../
+        done
         cd ../../
 
     - name: Release version
